@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONOMONO - 아동 안전 표준 정책</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background-color: #f4f3f0;
+            color: #44403c;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: #f4f3f0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 16px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .lang-btn {
+            padding: 6px 16px;
+            border: 1px solid #d6d3d1;
+            border-radius: 20px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            color: #78716c;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #e38d72;
+            color: white;
+            border-color: #e38d72;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .effective-date {
+            font-size: 14px;
+            color: #78716c;
+            margin-bottom: 24px;
+        }
+
+        .preamble {
+            background: #FCFAF7;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #44403c;
+            line-height: 1.7;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1c1917;
+            margin-bottom: 12px;
+        }
+
+        .section-content {
+            background: #FCFAF7;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .sub-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #292524;
+            margin-bottom: 4px;
+        }
+
+        .sub-section {
+            margin-bottom: 12px;
+        }
+
+        .bullet {
+            display: flex;
+            padding-left: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #57534e;
+            line-height: 1.5;
+        }
+
+        .bullet::before {
+            content: "\2022";
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .text-block {
+            font-size: 14px;
+            color: #44403c;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .info-box {
+            background: #f5f5f4;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .info-box-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1c1917;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .highlight-box-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #991b1b;
+            margin-bottom: 8px;
+        }
+
+        .highlight-bullet {
+            display: flex;
+            padding-left: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #7f1d1d;
+            line-height: 1.5;
+        }
+
+        .highlight-bullet::before {
+            content: "\2022";
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            color: #a8a29e;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MONOMONO - 아동 안전 표준 정책</h1>
+        <div class="lang-switcher">
+            <span class="lang-btn active">한국어</span>
+            <a href="csae-policy-ja.html" class="lang-btn">日本語</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="effective-date">시행일: 2026년 5월 4일</div>
+
+        <div class="preamble">
+            주식회사 심심라운지(이하 '회사')가 운영하는 MONOMONO 서비스(이하 '서비스')는 아동 성적 학대 및 착취(Child Sexual Abuse and Exploitation, 이하 'CSAE')를 엄격히 금지하며, Google의 아동 안전 표준 정책을 준수합니다. 본 정책은 서비스 내 아동 보호를 위한 회사의 기준과 대응 절차를 규정합니다.
+        </div>
+
+        <div class="section">
+            <div class="section-title">제1조 (목적)</div>
+            <div class="section-content">
+                <div class="text-block">본 정책은 서비스 이용 과정에서 아동 성적 학대 및 착취를 방지하고, 관련 콘텐츠와 행위를 신속히 탐지·차단·신고하기 위한 기준을 수립하는 것을 목적으로 합니다.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제2조 (연령 제한 및 접근 통제)</div>
+            <div class="section-content">
+                <div class="sub-section">
+                    <div class="sub-title">1. 이용 연령 제한</div>
+                    <div class="bullet">본 서비스는 만 19세 이상만 이용할 수 있습니다.</div>
+                    <div class="bullet">회원가입 시 생년월일을 필수로 입력받아 연령을 확인하며, 만 19세 미만의 가입을 시스템적으로 차단합니다.</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">2. 신분증 인증을 통한 연령 검증</div>
+                    <div class="bullet">신분증 인증(OCR 기반) 기능을 제공하여 실제 연령을 검증합니다.</div>
+                    <div class="bullet">신분증 인증 시 만 19세 미만으로 확인될 경우 인증이 즉시 거부되며, 해당 계정은 정지 조치됩니다.</div>
+                    <div class="bullet">신분증 이미지는 인증 처리 즉시 삭제되며, 어떠한 저장 매체에도 보관하지 않습니다.</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">3. 아동 계정 생성 불가</div>
+                    <div class="bullet">데이터베이스 레벨에서 만 19세 미만의 계정 생성이 차단됩니다 (CHECK 제약 조건 적용).</div>
+                    <div class="bullet">본 서비스는 아동을 대상으로 설계되지 않았으며, 아동용 기능이나 콘텐츠를 제공하지 않습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제3조 (금지 행위)</div>
+            <div class="section-content">
+                <div class="text-block">서비스 내에서 다음 행위는 절대 허용되지 않으며, 위반 시 즉각적인 제재 조치를 시행합니다:</div>
+
+                <div class="highlight-box">
+                    <div class="highlight-box-title">절대 금지 행위</div>
+                    <div class="highlight-bullet">아동 성적 학대물(CSAM)의 생성, 소지, 배포, 요청</div>
+                    <div class="highlight-bullet">미성년자를 대상으로 한 성적 접촉 시도 또는 그루밍(Grooming) 행위</div>
+                    <div class="highlight-bullet">아동을 성적 목적으로 유인하거나 착취하는 행위</div>
+                    <div class="highlight-bullet">미성년자의 성적 이미지 또는 영상을 공유하거나 요청하는 행위</div>
+                    <div class="highlight-bullet">아동과의 부적절한 만남을 주선하거나 시도하는 행위</div>
+                    <div class="highlight-bullet">아동 착취와 관련된 정보를 교환하거나 조장하는 행위</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제4조 (신고 절차)</div>
+            <div class="section-content">
+                <div class="text-block">아동 안전에 위협이 되는 콘텐츠, 메시지, 또는 행위를 발견한 경우 다음 방법으로 즉시 신고해주세요:</div>
+
+                <div class="sub-section">
+                    <div class="sub-title">1. 앱 내 신고</div>
+                    <div class="bullet">상대방 프로필 또는 채팅방에서 신고 버튼을 통해 신고할 수 있습니다.</div>
+                    <div class="bullet">신고 사유 선택 시 해당 카테고리(학대, 부적절 행위 등)를 선택해주세요.</div>
+                    <div class="bullet">증거 이미지(최대 5장)를 첨부할 수 있습니다.</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">2. 이메일 신고</div>
+                    <div class="info-box">
+                        <div class="info-box-title">신고 이메일:</div>
+                        <div>simsim_dev@simsimlounge.net</div>
+                    </div>
+                    <div class="bullet">이메일 제목에 "[아동안전신고]"를 포함해주세요.</div>
+                    <div class="bullet">신고 내용에 관련 사용자 정보, 발생 일시, 상세 내용을 기재해주세요.</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">3. 신고 처리 절차</div>
+                    <div class="bullet">모든 CSAE 관련 신고는 최우선으로 처리됩니다.</div>
+                    <div class="bullet">신고 접수 후 24시간 이내에 검토를 시작합니다.</div>
+                    <div class="bullet">신고 내용은 관리자에게 즉시 전달됩니다 (실시간 알림 시스템 운영).</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제5조 (위반 시 조치)</div>
+            <div class="section-content">
+                <div class="text-block">CSAE 관련 위반이 확인된 경우, 회사는 다음 조치를 즉각 시행합니다:</div>
+
+                <div class="sub-section">
+                    <div class="sub-title">1. 즉시 조치</div>
+                    <div class="bullet">위반 콘텐츠 즉시 삭제 및 접근 차단</div>
+                    <div class="bullet">해당 계정 즉시 정지 (suspended) 처리</div>
+                    <div class="bullet">관련 채팅 및 매칭 기록 보존 (수사 협조 목적)</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">2. 영구 조치</div>
+                    <div class="bullet">해당 계정 영구 차단 (banned) 처리</div>
+                    <div class="bullet">동일인의 재가입 방지 조치</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">3. 외부 기관 신고</div>
+                    <div class="bullet">관련 법률에 따라 수사 기관에 즉시 보고</div>
+                    <div class="bullet">NCMEC(National Center for Missing & Exploited Children)에 신고</div>
+                    <div class="bullet">대한민국: 아동·청소년 성착취물 신고 (여성가족부 1388 / 경찰청 182)</div>
+                    <div class="bullet">일본: 인터넷 핫라인센터(IHC) 및 관할 경찰에 신고</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제6조 (기술적 보호 조치)</div>
+            <div class="section-content">
+                <div class="text-block">회사는 아동 보호를 위해 다음과 같은 기술적 조치를 운영합니다:</div>
+
+                <div class="bullet">회원가입 시 생년월일 기반 연령 검증 및 만 19세 미만 시스템 차단</div>
+                <div class="bullet">데이터베이스 레벨의 연령 제약 조건 (CHECK constraint) 적용</div>
+                <div class="bullet">신분증 OCR 인증을 통한 실제 연령 이중 검증</div>
+                <div class="bullet">신고 시스템 운영 (6가지 신고 사유, 증거 첨부 지원)</div>
+                <div class="bullet">신고 접수 시 관리자 실시간 알림 (Webhook 기반)</div>
+                <div class="bullet">사용자 차단 기능 (차단 시 매칭 자동 해제)</div>
+                <div class="bullet">계정 상태 관리 시스템 (경고 → 일시 정지 → 영구 차단 단계적 제재)</div>
+                <div class="bullet">악용 방지를 위한 요청 제한 (Rate Limiting) 적용</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제7조 (교육 및 인식 제고)</div>
+            <div class="section-content">
+                <div class="bullet">앱 내 안전 수칙 가이드를 제공하여 이용자의 안전 의식을 제고합니다.</div>
+                <div class="bullet">의심스러운 행위 발견 시 신고를 독려하는 안내를 지속적으로 제공합니다.</div>
+                <div class="bullet">본 정책은 서비스 내에서 누구나 접근 가능하도록 공개합니다.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제8조 (정책 변경)</div>
+            <div class="section-content">
+                <div class="bullet">본 정책은 관련 법률 및 Google 정책 변경에 따라 수정될 수 있습니다.</div>
+                <div class="bullet">정책 변경 시 앱 내 공지 및 본 페이지를 통해 안내합니다.</div>
+                <div class="bullet">변경된 정책은 공지 후 즉시 효력을 발생합니다.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">제9조 (연락처)</div>
+            <div class="section-content">
+                <div class="info-box">
+                    <div class="info-box-title">회사명:</div>
+                    <div>주식회사 심심라운지</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">서비스명:</div>
+                    <div>MONOMONO</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">담당자:</div>
+                    <div>심지용</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">이메일:</div>
+                    <div>simsim_dev@simsimlounge.net</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">앱 내 문의:</div>
+                    <div>설정 > 고객센터</div>
+                </div>
+
+                <div class="text-block" style="margin-top: 16px;">아동 안전 관련 긴급 신고:</div>
+
+                <div class="info-box">
+                    <div class="info-box-title">대한민국:</div>
+                    <div>여성가족부 청소년 긴급전화 1388 / 경찰청 182</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">일본:</div>
+                    <div>児童相談所全国共通ダイヤル 189 / 警察 110</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">국제 신고:</div>
+                    <div>NCMEC CyberTipline (missingkids.org)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 MONOMONO. All rights reserved.
+    </div>
+</body>
+</html>

@@ -1,321 +1,539 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MONOMONO - プライバシーポリシー</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
-      background-color: #f4f3f0;
-      color: #44403c;
-      line-height: 1.7;
-    }
-    .header {
-      background: #f4f3f0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 16px 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .header h1 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #111827;
-    }
-    .lang-switcher {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .lang-btn {
-      padding: 6px 16px;
-      border: 1px solid #d6d3d1;
-      border-radius: 20px;
-      background: white;
-      font-size: 13px;
-      cursor: pointer;
-      color: #78716c;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .lang-btn.active {
-      background: #e38d72;
-      color: white;
-      border-color: #e38d72;
-    }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 24px 20px 60px;
-    }
-    .effective-date {
-      font-size: 14px;
-      color: #78716c;
-      margin-bottom: 24px;
-    }
-    .preamble {
-      background: #FCFAF7;
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-      font-size: 14px;
-      color: #44403c;
-      line-height: 1.7;
-    }
-    .section {
-      margin-bottom: 24px;
-    }
-    .section-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1c1917;
-      margin-bottom: 12px;
-    }
-    .section-content {
-      background: #FCFAF7;
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .sub-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: #292524;
-      margin-bottom: 4px;
-    }
-    .sub-section {
-      margin-bottom: 12px;
-    }
-    .bullet {
-      display: flex;
-      padding-left: 8px;
-      margin-bottom: 4px;
-      font-size: 14px;
-      color: #57534e;
-      line-height: 1.5;
-    }
-    .bullet::before {
-      content: "\2022";
-      margin-right: 8px;
-      flex-shrink: 0;
-    }
-    .text-block {
-      font-size: 14px;
-      color: #44403c;
-      line-height: 1.7;
-      margin-bottom: 12px;
-    }
-    .info-box {
-      background: #f5f5f4;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 12px;
-    }
-    .info-box-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #1c1917;
-      margin-bottom: 8px;
-    }
-    .footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 12px;
-      color: #a8a29e;
-      border-top: 1px solid rgba(0,0,0,0.05);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONOMONO - プライバシーポリシー</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+            background-color: #f4f3f0;
+            color: #44403c;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: #f4f3f0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 16px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .lang-btn {
+            padding: 6px 16px;
+            border: 1px solid #d6d3d1;
+            border-radius: 20px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            color: #78716c;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #e38d72;
+            color: white;
+            border-color: #e38d72;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .effective-date {
+            font-size: 14px;
+            color: #78716c;
+            margin-bottom: 24px;
+        }
+
+        .preamble {
+            background: #FCFAF7;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #44403c;
+            line-height: 1.7;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1c1917;
+            margin-bottom: 12px;
+        }
+
+        .section-content {
+            background: #FCFAF7;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .sub-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #292524;
+            margin-bottom: 4px;
+        }
+
+        .sub-section {
+            margin-bottom: 12px;
+        }
+
+        .bullet {
+            display: flex;
+            padding-left: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #57534e;
+            line-height: 1.5;
+        }
+
+        .bullet::before {
+            content: "\2022";
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .text-block {
+            font-size: 14px;
+            color: #44403c;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .info-box {
+            background: #f5f5f4;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .info-box-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1c1917;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            color: #a8a29e;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
 </head>
 <body>
-  <div class="header">
-    <h1>プライバシーポリシー</h1>
-    <div class="lang-switcher">
-      <a class="lang-btn" href="privacy-ko.html">한국어</a>
-      <span class="lang-btn active">日本語</span>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="effective-date">施行日: 2026年4月28日</div>
-
-    <div class="preamble">
-      株式会社シムシムラウンジ（以下「当社」）が運営するMONOMONOサービスは、韓国「個人情報保護法」および日本「個人情報保護法」に基づき、利用者の個人情報を保護し、これに関する苦情を迅速かつ円滑に処理するために、以下のとおりプライバシーポリシーを策定・公開します。
-    </div>
-
-    <!-- 第1条 -->
-    <div class="section">
-      <div class="section-title">第1条（収集する個人情報）</div>
-      <div class="section-content">
-        <div class="sub-section">
-          <div class="sub-title">1. 会員登録時</div>
-          <div class="bullet">必須: メールアドレス、パスワード、ニックネーム、国籍、性別、生年月日</div>
-          <div class="bullet">任意: プロフィール写真、自己紹介、興味、旅行計画、SNS ID（Instagram、Facebook）</div>
+    <div class="header">
+        <h1>MONOMONO - プライバシーポリシー</h1>
+        <div class="lang-switcher">
+            <a href="privacy-ko.html" class="lang-btn">한국어</a>
+            <span class="lang-btn active">日本語</span>
         </div>
-        <div class="sub-section">
-          <div class="sub-title">2. 身分証認証時（任意）</div>
-          <div class="bullet">身分証明書の画像: OCR処理目的のみで一時的に収集、処理完了後即時削除（サーバー未保存）</div>
-          <div class="bullet">氏名: 本人確認照合目的のみで一時的に収集、処理完了後即時削除（サーバー未保存）</div>
-          <div class="bullet">認証結果のメタデータのみ保管: 氏名一致の有無（boolean）、生年月日一致の有無（boolean）、信頼度スコア</div>
-        </div>
-        <div class="sub-section">
-          <div class="sub-title">3. 携帯電話本人認証時</div>
-          <div class="bullet">携帯電話番号: 本人確認および重複登録防止目的で収集</div>
-        </div>
-        <div class="sub-section">
-          <div class="sub-title">4. サービス利用時の自動収集</div>
-          <div class="bullet">デバイス情報（プッシュ通知送信用FCMトークン）</div>
-        </div>
-      </div>
     </div>
 
-    <!-- 第2条 -->
-    <div class="section">
-      <div class="section-title">第2条（個人情報の処理目的）</div>
-      <div class="section-content">
-        <div class="bullet">会員登録および管理</div>
-        <div class="bullet">韓日旅行マッチングサービスの提供</div>
-        <div class="bullet">本人確認および年齢確認（19歳以上）</div>
-        <div class="bullet">チャットおよび通知サービスの提供</div>
-        <div class="bullet">サービス改善および不正利用防止</div>
-        <div class="bullet">携帯電話本人認証（SMS認証コード送信）</div>
-      </div>
-    </div>
+    <div class="container">
+        <div class="effective-date">施行日: 2026年5月4日</div>
 
-    <!-- 第3条 -->
-    <div class="section">
-      <div class="section-title">第3条（個人情報の第三者提供および処理委託）</div>
-      <div class="section-content">
-        <div class="text-block">当社は原則として、利用者の個人情報を第三者に提供しません。ただし、サービス提供のため、以下のとおり個人情報の処理を委託しています：</div>
-        <div class="info-box">
-          <div class="info-box-title">1. 身分証認証（OCR処理）</div>
-          <div class="bullet">提供先: Google Cloud Vision API（Google LLC、米国）</div>
-          <div class="bullet">提供項目: 身分証明書の画像（処理後即時削除）</div>
-          <div class="bullet">提供目的: 文字認識（OCR）による本人確認</div>
-          <div class="bullet">保有期間: 処理後即時削除（Google側もAPI処理後データ未保有）</div>
+        <div class="preamble">
+            株式会社シムシムラウンジ（以下「当社」）が運営するMONOMONOサービスは、韓国「個人情報保護法」および日本「個人情報保護法」に基づき、利用者の個人情報を保護し、これに関する苦情を迅速かつ円滑に処理するために、以下のとおりプライバシーポリシーを策定・公開します。
         </div>
-        <div class="info-box">
-          <div class="info-box-title">2. チャットメッセージ翻訳</div>
-          <div class="bullet">提供先: DeepL SE（ドイツ）/ Naver Cloud（韓国、予備用）</div>
-          <div class="bullet">提供項目: チャットメッセージ原文</div>
-          <div class="bullet">提供目的: 韓国語・日本語自動翻訳サービスの提供</div>
-          <div class="bullet">保有期間: API処理後即時削除（翻訳結果のみサーバーに保存）</div>
+
+        <!-- 第1条 -->
+        <div class="section">
+            <div class="section-title">第1条（収集する個人情報）</div>
+            <div class="section-content">
+                <div class="sub-section">
+                    <div class="sub-title">1. 会員登録時</div>
+                    <div class="text-block"><strong>必須:</strong> メールアドレス、パスワード、ニックネーム、国籍、性別、生年月日</div>
+                    <div class="text-block"><strong>任意:</strong> プロフィール写真、自己紹介、興味、旅行計画、SNS ID（Instagram、Facebook）</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">2. 身分証認証時（任意）</div>
+                    <div class="bullet">身分証明書の画像: OCR処理目的のみで一時的に収集、処理完了後即時削除（サーバー未保存）</div>
+                    <div class="bullet">氏名: 本人確認照合目的のみで一時的に収集、処理完了後即時削除（サーバー未保存）</div>
+                    <div class="bullet">認証結果のメタデータのみ保管: 氏名一致の有無（boolean）、生年月日一致の有無（boolean）、信頼度スコア</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">3. 携帯電話本人認証時</div>
+                    <div class="bullet">携帯電話番号: 本人確認および重複登録防止目的で収集</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">4. サービス利用時の自動収集</div>
+                    <div class="bullet">デバイス情報（プッシュ通知送信用FCMトークン）</div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">5. ローカル体験サービス利用時</div>
+                    <div class="bullet">位置情報: 場所検索および地図表示のため、住所・緯度経度座標を収集</div>
+                </div>
+            </div>
         </div>
-        <div class="info-box">
-          <div class="info-box-title">3. データホスティングおよびインフラ</div>
-          <div class="bullet">提供先: Supabase Inc.（米国、AWSインフラ）</div>
-          <div class="bullet">提供項目: サービス利用に必要なすべてのデータ（会員情報、チャットメッセージ等）</div>
-          <div class="bullet">提供目的: データベースホスティングおよび認証サービスの提供</div>
-          <div class="bullet">保有期間: 退会時まで（退会後30日間の猶予期間経過後に削除）</div>
+
+        <!-- 第2条 -->
+        <div class="section">
+            <div class="section-title">第2条（個人情報の処理目的）</div>
+            <div class="section-content">
+                <div class="bullet">会員登録および管理</div>
+                <div class="bullet">韓日旅行マッチングサービスの提供</div>
+                <div class="bullet">本人確認および年齢確認（19歳以上）</div>
+                <div class="bullet">チャットおよび通知サービスの提供</div>
+                <div class="bullet">サービス改善および不正利用防止</div>
+                <div class="bullet">携帯電話本人認証（SMS認証コード送信）</div>
+            </div>
         </div>
-        <div class="info-box">
-          <div class="info-box-title">4. プッシュ通知</div>
-          <div class="bullet">提供先: Firebase Cloud Messaging（Google LLC、米国）</div>
-          <div class="bullet">提供項目: デバイストークン（FCMトークン）、通知メッセージ内容</div>
-          <div class="bullet">提供目的: プッシュ通知の送信</div>
-          <div class="bullet">保有期間: サービス利用期間中維持</div>
+
+        <!-- 第3条 -->
+        <div class="section">
+            <div class="section-title">第3条（個人情報の第三者提供および処理委託）</div>
+            <div class="section-content">
+                <div class="text-block">当社は原則として、利用者の個人情報を第三者に提供しません。ただし、サービス提供のため、以下のとおり個人情報の処理を委託しています：</div>
+
+                <div class="sub-section">
+                    <div class="sub-title">1. 身分証認証（OCR処理）</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>Google Cloud Vision API（Google LLC、米国）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>身分証明書の画像（処理後即時削除）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>文字認識（OCR）による本人確認</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>処理後即時削除（Google側もAPI処理後データ未保有）</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">2. チャットメッセージ翻訳</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>DeepL SE（ドイツ）/ Naver Cloud（韓国、予備用）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>チャットメッセージ原文</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>韓国語・日本語自動翻訳サービスの提供</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>API処理後即時削除（翻訳結果のみサーバーに保存）</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">3. データホスティングおよびインフラ</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>Supabase Inc.（米国、AWSインフラ）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>サービス利用に必要なすべてのデータ（会員情報、チャットメッセージ等）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>データベースホスティングおよび認証サービスの提供</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>退会時まで（退会後30日間の猶予期間経過後に削除）</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">4. プッシュ通知</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>Firebase Cloud Messaging（Google LLC、米国）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>デバイストークン（FCMトークン）、通知メッセージ内容</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>プッシュ通知の送信</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>サービス利用期間中維持</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">5. エラーモニタリング</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>Sentry（Functional Software Inc.、米国）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>エラーログ、デバイス情報、アプリ状態情報（個人識別情報は含まない）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>アプリエラー検知およびサービス安定性の改善</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>Sentryの既定保有ポリシーに従う（90日）</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">6. 携帯電話本人認証（SMS）</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>Twilio Inc.（米国）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>携帯電話番号</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>SMS認証コード送信による本人確認</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>Twilioのメッセージログ保有ポリシーに従う（既定30日）</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">7. ソーシャルログイン（カカオ）</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>Kakao Corp.（韓国）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>メールアドレス、プロフィール情報（カカオアカウントベース）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>カカオアカウントによる簡単ログイン</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>退会時まで</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">8. ソーシャルログイン（LINE）</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>LINE Corporation（日本）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>メールアドレス、プロフィール情報（LINEアカウントベース）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>LINEアカウントによる簡単ログイン</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>退会時まで</div>
+                    </div>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-title">9. 位置情報および地図サービス</div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供先:</div>
+                        <div>Google Maps Platform（Google LLC、米国）</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供項目:</div>
+                        <div>検索ワード（住所）、位置座標</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">提供目的:</div>
+                        <div>ローカル体験の場所検索および地図表示</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-title">保有期間:</div>
+                        <div>API処理後即時削除（検索結果の座標のみサーバーに保存）</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="info-box">
-          <div class="info-box-title">5. エラーモニタリング</div>
-          <div class="bullet">提供先: Sentry（Functional Software Inc.、米国）</div>
-          <div class="bullet">提供項目: エラーログ、デバイス情報、アプリ状態情報（個人識別情報は含まない）</div>
-          <div class="bullet">提供目的: アプリエラー検知およびサービス安定性の改善</div>
-          <div class="bullet">保有期間: Sentryの既定保有ポリシーに従う（90日）</div>
+
+        <!-- 第3-2条 -->
+        <div class="section">
+            <div class="section-title">第3-2条（個人情報の国外移転）</div>
+            <div class="section-content">
+                <div class="text-block">当社はサービス提供のため、以下のとおり個人情報を国外に移転しています：</div>
+
+                <div class="info-box">
+                    <div class="info-box-title">移転先国:</div>
+                    <div>米国（Supabase、Google、Sentry、Twilio）、ドイツ（DeepL）、韓国（Kakao）、日本（LINE）</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">移転項目:</div>
+                    <div>第3条に記載の各サービス別提供項目と同一</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">移転目的:</div>
+                    <div>第3条に記載の各サービス別提供目的と同一</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">移転方法:</div>
+                    <div>ネットワークを通じた暗号化送信（HTTPS/TLS）</div>
+                </div>
+
+                <div class="text-block" style="margin-top: 12px;">各委託先は該当国の個人情報保護法を遵守し、契約により提供された個人情報の安全な処理を保証します。</div>
+            </div>
         </div>
-        <div class="info-box">
-          <div class="info-box-title">6. 携帯電話本人認証（SMS）</div>
-          <div class="bullet">提供先: Twilio Inc.（米国）</div>
-          <div class="bullet">提供項目: 携帯電話番号</div>
-          <div class="bullet">提供目的: SMS認証コード送信による本人確認</div>
-          <div class="bullet">保有期間: Twilioのメッセージログ保有ポリシーに従う（既定30日）</div>
+
+        <!-- 第4条 -->
+        <div class="section">
+            <div class="section-title">第4条（個人情報の保有および利用期間）</div>
+            <div class="section-content">
+                <div class="bullet">会員情報: 退会申請後30日間の猶予期間経過後に永久削除（猶予期間内にログインすれば削除取消可能）</div>
+                <div class="bullet">身分証明書の画像および氏名: 認証処理完了後即時削除（サーバー未保存）</div>
+                <div class="bullet">認証結果メタデータ: 退会申請後30日間の猶予期間経過後に削除</div>
+                <div class="bullet">チャットメッセージ: 退会申請後30日間の猶予期間経過後に削除</div>
+                <div class="bullet">携帯電話番号: 退会申請後30日間の猶予期間経過後に削除（マスキング処理して保存）</div>
+            </div>
         </div>
-      </div>
+
+        <!-- 第5条 -->
+        <div class="section">
+            <div class="section-title">第5条（個人情報の破棄）</div>
+            <div class="section-content">
+                <div class="text-block">当社は、個人情報の保有期間が経過した場合、または処理目的が達成された場合、遅滞なく当該個人情報を破棄します。特に身分証認証時に収集される画像と氏名は、認証目的達成後、直ちにメモリから削除され、いかなる記憶媒体にも記録されません。</div>
+            </div>
+        </div>
+
+        <!-- 第6条 -->
+        <div class="section">
+            <div class="section-title">第6条（利用者の権利）</div>
+            <div class="section-content">
+                <div class="text-block">利用者はいつでも以下の権利を行使することができます：</div>
+                <div class="bullet">個人情報の閲覧要求</div>
+                <div class="bullet">個人情報の訂正・削除要求</div>
+                <div class="bullet">個人情報の処理停止要求</div>
+                <div class="bullet">退会（設定 > サービス退会、申請後30日間の猶予期間適用）</div>
+            </div>
+        </div>
+
+        <!-- 第7条 -->
+        <div class="section">
+            <div class="section-title">第7条（安全性確保措置）</div>
+            <div class="section-content">
+                <div class="bullet">個人情報は暗号化して保存・送信します（HTTPS/TLS）</div>
+                <div class="bullet">パスワードは一方向ハッシュ処理します</div>
+                <div class="bullet">身分証明書の画像はサーバーに保存せず、認証処理後直ちにメモリから削除します</div>
+                <div class="bullet">アクセス権限を最小化し、アクセス記録を管理します</div>
+            </div>
+        </div>
+
+        <!-- 第8条 -->
+        <div class="section">
+            <div class="section-title">第8条（個人情報保護責任者およびお問い合わせ先）</div>
+            <div class="section-content">
+                <div class="text-block">当社は個人情報の処理に関する業務を総括して責任を負い、利用者の個人情報に関するお問い合わせおよび苦情処理のため、以下のとおり個人情報保護責任者を指定しています：</div>
+
+                <div class="info-box">
+                    <div class="info-box-title">会社名:</div>
+                    <div>株式会社シムシムラウンジ（주식회사 심심라운지）</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">代表者:</div>
+                    <div>シム・ウヨン（심우용）</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">事業者登録番号:</div>
+                    <div>333-88-03453</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">所在地:</div>
+                    <div>ソウル特別市松坡区オグムロ11ギル55</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">サービス名:</div>
+                    <div>MONOMONO</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">個人情報保護責任者:</div>
+                    <div>シム・ジヨン（심지용）</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title">お問い合わせ方法:</div>
+                    <div>アプリ内「サポート」またはメール（simsim_dev@simsimlounge.net）</div>
+                </div>
+
+                <div class="text-block" style="margin-top: 12px;">利用者はサービス利用中に発生した個人情報保護に関するお問い合わせ、苦情、被害救済等を個人情報保護責任者に申告することができます。</div>
+
+                <div class="text-block">その他、個人情報の侵害に関する相談は以下の機関にお問い合わせいただけます：</div>
+
+                <div class="bullet">個人情報保護委員会 (ppc.go.jp)</div>
+                <div class="bullet">消費者庁 (caa.go.jp)</div>
+                <div class="bullet">警察庁サイバー犯罪対策 (npa.go.jp)</div>
+            </div>
+        </div>
     </div>
 
-    <!-- 第3-2条 -->
-    <div class="section">
-      <div class="section-title">第3-2条（個人情報の国外移転）</div>
-      <div class="section-content">
-        <div class="text-block">当社はサービス提供のため、以下のとおり個人情報を国外に移転しています：</div>
-        <div class="bullet">移転先国: 米国（Supabase、Google、Sentry、Twilio）、ドイツ（DeepL）</div>
-        <div class="bullet">移転項目: 第3条に記載の各サービス別提供項目と同一</div>
-        <div class="bullet">移転目的: 第3条に記載の各サービス別提供目的と同一</div>
-        <div class="bullet">移転方法: ネットワークを通じた暗号化送信（HTTPS/TLS）</div>
-        <div class="text-block" style="margin-top: 12px; margin-bottom: 0;">各委託先は該当国の個人情報保護法を遵守し、契約により提供された個人情報の安全な処理を保証します。</div>
-      </div>
+    <div class="footer">
+        &copy; 2026 MONOMONO. All rights reserved.
     </div>
-
-    <!-- 第4条 -->
-    <div class="section">
-      <div class="section-title">第4条（個人情報の保有および利用期間）</div>
-      <div class="section-content">
-        <div class="bullet">会員情報: 退会申請後30日間の猶予期間経過後に永久削除（猶予期間内にログインすれば削除取消可能）</div>
-        <div class="bullet">身分証明書の画像および氏名: 認証処理完了後即時削除（サーバー未保存）</div>
-        <div class="bullet">認証結果メタデータ: 退会申請後30日間の猶予期間経過後に削除</div>
-        <div class="bullet">チャットメッセージ: 退会申請後30日間の猶予期間経過後に削除</div>
-        <div class="bullet">携帯電話番号: 退会申請後30日間の猶予期間経過後に削除（マスキング処理して保存）</div>
-      </div>
-    </div>
-
-    <!-- 第5条 -->
-    <div class="section">
-      <div class="section-title">第5条（個人情報の破棄）</div>
-      <div class="section-content">
-        <div class="text-block" style="margin-bottom: 0;">当社は、個人情報の保有期間が経過した場合、または処理目的が達成された場合、遅滞なく当該個人情報を破棄します。特に身分証認証時に収集される画像と氏名は、認証目的達成後、直ちにメモリから削除され、いかなる記憶媒体にも記録されません。</div>
-      </div>
-    </div>
-
-    <!-- 第6条 -->
-    <div class="section">
-      <div class="section-title">第6条（利用者の権利）</div>
-      <div class="section-content">
-        <div class="text-block">利用者はいつでも以下の権利を行使することができます：</div>
-        <div class="bullet">個人情報の閲覧要求</div>
-        <div class="bullet">個人情報の訂正・削除要求</div>
-        <div class="bullet">個人情報の処理停止要求</div>
-        <div class="bullet">退会（設定 > サービス退会、申請後30日間の猶予期間適用）</div>
-      </div>
-    </div>
-
-    <!-- 第7条 -->
-    <div class="section">
-      <div class="section-title">第7条（安全性確保措置）</div>
-      <div class="section-content">
-        <div class="bullet">個人情報は暗号化して保存・送信します（HTTPS/TLS）</div>
-        <div class="bullet">パスワードは一方向ハッシュ処理します</div>
-        <div class="bullet">身分証明書の画像はサーバーに保存せず、認証処理後直ちにメモリから削除します</div>
-        <div class="bullet">アクセス権限を最小化し、アクセス記録を管理します</div>
-      </div>
-    </div>
-
-    <!-- 第8条 -->
-    <div class="section">
-      <div class="section-title">第8条（個人情報保護責任者およびお問い合わせ先）</div>
-      <div class="section-content">
-        <div class="text-block">当社は個人情報の処理に関する業務を総括して責任を負い、利用者の個人情報に関するお問い合わせおよび苦情処理のため、以下のとおり個人情報保護責任者を指定しています：</div>
-        <div class="bullet">会社名: 株式会社シムシムラウンジ（주식회사 심심라운지）</div>
-        <div class="bullet">代表者: シム・ウヨン（심우용）</div>
-        <div class="bullet">事業者登録番号: 333-88-03453</div>
-        <div class="bullet">所在地: ソウル特別市松坡区オグムロ11ギル55</div>
-        <div class="bullet">サービス名: MONOMONO</div>
-        <div class="bullet">個人情報保護責任者: シム・ジヨン（심지용）</div>
-        <div class="bullet">お問い合わせ方法: アプリ内「サポート」またはメール（simsim_dev@simsimlounge.net）</div>
-        <div class="text-block" style="margin-top: 12px;">利用者はサービス利用中に発生した個人情報保護に関するお問い合わせ、苦情、被害救済等を個人情報保護責任者に申告することができます。</div>
-        <div class="text-block">その他、個人情報の侵害に関する相談は以下の機関にお問い合わせいただけます：</div>
-        <div class="bullet">個人情報保護委員会 (ppc.go.jp)</div>
-        <div class="bullet">消費者庁 (caa.go.jp)</div>
-        <div class="bullet">警察庁サイバー犯罪対策 (npa.go.jp)</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    &copy; 2026 MONOMONO. All rights reserved.
-  </div>
 </body>
 </html>
