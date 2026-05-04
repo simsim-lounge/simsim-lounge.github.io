@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONOMONO | 한국과 일본을 잇는 여행 매칭 앱</title>
+  <meta name="description" content="MONOMONO - 여행 일정을 등록하고, 같은 도시의 여행자와 매칭되어 함께 여행하세요. 한국어-일본어 자동 번역으로 언어 장벽 없이 소통할 수 있습니다.">
+  <meta name="theme-color" content="#e38d72">
+  <meta property="og:title" content="MONOMONO | 한국과 일본을 잇는 여행 매칭 앱">
+  <meta property="og:description" content="여행 일정을 등록하고, 같은 도시의 여행자와 매칭되어 함께 여행하세요.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>M</text></svg>">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <style>
+    :root {
+      --color-primary: #e38d72;
+      --color-primary-dark: #d4755a;
+      --color-primary-light: #fdf3f0;
+      --color-text: #111827;
+      --color-text-secondary: #6B7280;
+      --color-text-tertiary: #9CA3AF;
+      --color-bg: #FFFFFF;
+      --color-bg-subtle: #F9FAFB;
+      --color-border: #E5E7EB;
+      --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --max-width: 1120px;
+      --section-padding: 120px 0;
+      --radius: 16px;
+      --radius-sm: 12px;
+      --transition: 0.2s ease;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.7;
+      font-size: 16px;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+    /* Language toggle */
+    [data-lang] { display: none !important; }
+    [lang="ko"] [data-lang="ko"] { display: inline !important; }
+    [lang="ja"] [data-lang="ja"] { display: inline !important; }
+    [lang="en"] [data-lang="en"] { display: inline !important; }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; }
+    .nav-logo img { height: 36px; width: 36px; border-radius: 10px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--color-text-secondary); transition: color var(--transition); }
+    .nav-links a:hover { color: var(--color-text); }
+    .lang-switch {
+      display: flex; gap: 4px; background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border); border-radius: 8px; padding: 3px;
+    }
+    .lang-switch button {
+      border: none; background: none; padding: 5px 10px; font-size: 12px;
+      font-weight: 600; border-radius: 6px; cursor: pointer;
+      color: var(--color-text-secondary); transition: all var(--transition);
+    }
+    .lang-switch button.active {
+      background: var(--color-primary); color: #fff;
+    }
+    .nav-mobile-btn {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 24px; height: 24px; flex-direction: column; justify-content: center;
+      align-items: center; gap: 5px;
+    }
+    .nav-mobile-btn span { display: block; width: 20px; height: 2px; background: var(--color-text); border-radius: 1px; }
+
+    /* Hero */
+    .hero {
+      padding: 180px 0 140px; text-align: center;
+      background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 100%);
+    }
+    .hero-badge {
+      display: inline-block; padding: 6px 16px; background: var(--color-bg);
+      border: 1px solid var(--color-border); border-radius: 100px;
+      font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 28px;
+    }
+    .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero h1 .highlight { color: var(--color-primary); }
+    .hero-desc { font-size: 19px; color: var(--color-text-secondary); max-width: 520px; margin: 0 auto 44px; line-height: 1.7; }
+    .hero-buttons { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 32px; border-radius: 12px; font-size: 15px; font-weight: 600;
+      cursor: pointer; border: none; transition: all var(--transition); text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--color-primary); color: #fff;
+      box-shadow: 0 1px 2px rgba(227,141,114,0.2), 0 4px 12px rgba(227,141,114,0.15);
+    }
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      box-shadow: 0 1px 2px rgba(227,141,114,0.3), 0 8px 20px rgba(227,141,114,0.2);
+      transform: translateY(-1px);
+    }
+    .btn-secondary { background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); }
+    .btn-secondary:hover { background: var(--color-bg-subtle); border-color: #D1D5DB; transform: translateY(-1px); }
+
+    /* Section common */
+    .section-label {
+      display: inline-block; font-size: 13px; font-weight: 600;
+      color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;
+    }
+    .section-title { font-size: 36px; font-weight: 800; line-height: 1.3; letter-spacing: -0.025em; margin-bottom: 20px; }
+    .section-desc { font-size: 17px; color: var(--color-text-secondary); line-height: 1.8; max-width: 640px; }
+
+    /* Features */
+    .features { padding: var(--section-padding); }
+    .features-header { text-align: center; margin-bottom: 72px; }
+    .features-header .section-desc { margin: 0 auto; }
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .feature-card {
+      background: var(--color-bg); border: 1px solid var(--color-border);
+      border-radius: var(--radius); padding: 40px 36px; transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--color-primary); opacity: 0; transition: opacity var(--transition);
+    }
+    .feature-card:hover { border-color: rgba(227,141,114,0.3); box-shadow: 0 4px 24px rgba(0,0,0,0.04); transform: translateY(-2px); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-card.feature-card-wide { grid-column: 1 / -1; }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 14px; display: flex;
+      align-items: center; justify-content: center; font-size: 24px;
+      margin-bottom: 20px; background: var(--color-primary-light);
+    }
+    .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; }
+    .feature-list { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .feature-list li { font-size: 14px; color: var(--color-text-secondary); display: flex; align-items: center; gap: 8px; }
+    .feature-list li::before { content: ''; width: 5px; height: 5px; background: var(--color-primary); border-radius: 50%; flex-shrink: 0; }
+
+    /* Screenshots */
+    .screenshots { padding: var(--section-padding); background: var(--color-bg-subtle); }
+    .screenshots-header { text-align: center; margin-bottom: 48px; }
+    .screenshots-placeholder {
+      text-align: center; padding: 80px 40px; background: var(--color-bg);
+      border: 2px dashed var(--color-border); border-radius: var(--radius);
+      color: var(--color-text-tertiary); font-size: 15px;
+    }
+
+    /* Download */
+    .download { padding: var(--section-padding); text-align: center; }
+    .download-box {
+      max-width: 600px; margin: 0 auto; padding: 64px 40px;
+      background: linear-gradient(135deg, var(--color-primary-light), #fff5f2);
+      border-radius: var(--radius); border: 1px solid rgba(227,141,114,0.15);
+    }
+    .download-box h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .download-box p { font-size: 16px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 32px; }
+    .store-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 24px; background: #111; color: #fff; border-radius: 10px;
+      font-size: 14px; font-weight: 600; transition: all var(--transition);
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    .store-badge svg { width: 22px; height: 22px; }
+    .store-badge-disabled { opacity: 0.5; pointer-events: none; }
+
+    /* Footer */
+    .footer { padding: 40px 0; border-top: 1px solid var(--color-border); background: var(--color-bg-subtle); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+    .footer-links { display: flex; gap: 24px; margin-bottom: 12px; }
+    .footer-links a { font-size: 13px; color: var(--color-text-secondary); transition: color var(--transition); }
+    .footer-links a[data-lang] { display: none !important; }
+    [lang="ko"] .footer-links a[data-lang="ko"] { display: inline !important; }
+    [lang="ja"] .footer-links a[data-lang="ja"] { display: inline !important; }
+    [lang="en"] .footer-links a[data-lang="en"] { display: inline !important; }
+    .footer-links a:hover { color: var(--color-primary); }
+    .footer-copyright { font-size: 13px; color: var(--color-text-tertiary); }
+    .footer-contact { font-size: 13px; color: var(--color-text-secondary); }
+    .footer-contact a { color: var(--color-primary); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      :root { --section-padding: 96px 0; }
+      .hero h1 { font-size: 42px; }
+      .section-title { font-size: 30px; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-padding: 80px 0; }
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+      .nav-open {
+        display: flex !important; flex-direction: column; position: absolute;
+        top: 64px; left: 0; right: 0; background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(20px); border-bottom: 1px solid var(--color-border);
+        padding: 16px 24px 24px; gap: 4px;
+      }
+      .nav-open a { display: block; padding: 12px 0; font-size: 16px; }
+      .nav-open .lang-switch { margin-top: 12px; }
+      .hero { padding: 140px 0 100px; }
+      .hero h1 { font-size: 34px; }
+      .hero-desc { font-size: 16px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 280px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-card.feature-card-wide { grid-column: auto; }
+      .section-title { font-size: 26px; }
+      .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 120px 0 80px; }
+      .hero h1 { font-size: 28px; }
+      .download-box { padding: 48px 24px; }
+      .download-box h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="../assets/images/logo-monomono.png" alt="MONOMONO">
+        <span>MONOMONO</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features"><span data-lang="ko">주요 기능</span><span data-lang="ja">主な機能</span><span data-lang="en">Features</span></a></li>
+        <li><a href="#download"><span data-lang="ko">다운로드</span><span data-lang="ja">ダウンロード</span><span data-lang="en">Download</span></a></li>
+        <li>
+          <div class="lang-switch">
+            <button onclick="setLang('ko')" class="active">KO</button>
+            <button onclick="setLang('ja')">JA</button>
+            <button onclick="setLang('en')">EN</button>
+          </div>
+        </li>
+      </ul>
+      <button class="nav-mobile-btn" aria-label="메뉴 열기" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Korea & Japan Travel Matching</div>
+      <h1>
+        <span data-lang="ko">한국과 일본을 잇는<br>여행 매칭 앱, <span class="highlight">MONOMONO</span></span>
+        <span data-lang="ja">韓国と日本をつなぐ<br>旅マッチングアプリ、<span class="highlight">MONOMONO</span></span>
+        <span data-lang="en">Travel matching app<br>connecting Korea & Japan, <span class="highlight">MONOMONO</span></span>
+      </h1>
+      <p class="hero-desc">
+        <span data-lang="ko">여행 일정을 등록하고, 같은 도시의 여행자와 매칭되어<br>언어 장벽 없이 함께 여행하세요.</span>
+        <span data-lang="ja">旅行日程を登録して、同じ都市の旅行者とマッチング。<br>言語の壁なく一緒に旅しましょう。</span>
+        <span data-lang="en">Register your travel plans, match with travelers in the same city,<br>and explore together without language barriers.</span>
+      </p>
+      <div class="hero-buttons">
+        <a href="#download" class="btn btn-primary">
+          <span data-lang="ko">앱 다운로드</span>
+          <span data-lang="ja">アプリをダウンロード</span>
+          <span data-lang="en">Download App</span>
+        </a>
+        <a href="#features" class="btn btn-secondary">
+          <span data-lang="ko">기능 살펴보기</span>
+          <span data-lang="ja">機能を見る</span>
+          <span data-lang="en">Explore Features</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="features-header">
+        <span class="section-label">Features</span>
+        <h2 class="section-title">
+          <span data-lang="ko">MONOMONO의 주요 기능</span>
+          <span data-lang="ja">MONOMONOの主な機能</span>
+          <span data-lang="en">Key Features of MONOMONO</span>
+        </h2>
+        <p class="section-desc">
+          <span data-lang="ko">여행 매칭부터 실시간 번역 채팅, 로컬 체험까지. 새로운 여행 경험을 제공합니다.</span>
+          <span data-lang="ja">旅マッチングからリアルタイム翻訳チャット、ローカル体験まで。新しい旅の体験を提供します。</span>
+          <span data-lang="en">From travel matching to real-time translated chat and local experiences. A new way to travel.</span>
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Travel Matching -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e38d72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>
+            <span data-lang="ko">여행 매칭</span>
+            <span data-lang="ja">旅マッチング</span>
+            <span data-lang="en">Travel Matching</span>
+          </h3>
+          <p>
+            <span data-lang="ko">여행 일정을 등록하면 같은 도시, 같은 시기의 사용자를 추천합니다. 스와이프로 간편하게 매칭하세요.</span>
+            <span data-lang="ja">旅行日程を登録すると、同じ都市・同じ時期のユーザーをおすすめ。スワイプで簡単にマッチング。</span>
+            <span data-lang="en">Register your travel dates and get matched with users in the same city at the same time. Swipe to match easily.</span>
+          </p>
+          <ul class="feature-list">
+            <li><span data-lang="ko">같은 도시 & 같은 시기 추천</span><span data-lang="ja">同じ都市&同じ時期のおすすめ</span><span data-lang="en">Same city & same period recommendations</span></li>
+            <li><span data-lang="ko">스와이프로 좋아요/스킵</span><span data-lang="ja">スワイプでいいね/スキップ</span><span data-lang="en">Swipe to like/skip</span></li>
+            <li><span data-lang="ko">서로 좋아요 시 매칭 성사</span><span data-lang="ja">お互いいいねでマッチング成立</span><span data-lang="en">Mutual likes create a match</span></li>
+          </ul>
+        </div>
+
+        <!-- Chat & Translation -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e38d72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>
+            <span data-lang="ko">실시간 채팅 & 자동 번역</span>
+            <span data-lang="ja">リアルタイムチャット & 自動翻訳</span>
+            <span data-lang="en">Real-time Chat & Auto Translation</span>
+          </h3>
+          <p>
+            <span data-lang="ko">매칭된 상대와 실시간으로 채팅하세요. 한국어와 일본어가 자동 번역되어 언어 장벽 없이 소통할 수 있습니다.</span>
+            <span data-lang="ja">マッチした相手とリアルタイムでチャット。韓国語と日本語が自動翻訳され、言語の壁なくコミュニケーションできます。</span>
+            <span data-lang="en">Chat in real-time with your match. Korean and Japanese are auto-translated so you can communicate without language barriers.</span>
+          </p>
+          <ul class="feature-list">
+            <li><span data-lang="ko">매칭된 상대와 실시간 채팅</span><span data-lang="ja">マッチした相手とリアルタイムチャット</span><span data-lang="en">Real-time chat with matches</span></li>
+            <li><span data-lang="ko">한국어 - 일본어 자동 번역</span><span data-lang="ja">韓国語 - 日本語 自動翻訳</span><span data-lang="en">Korean - Japanese auto translation</span></li>
+            <li><span data-lang="ko">언어 장벽 없는 소통</span><span data-lang="ja">言語の壁のないコミュニケーション</span><span data-lang="en">Communication without language barriers</span></li>
+          </ul>
+        </div>
+
+        <!-- Local Experiences -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e38d72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>
+            <span data-lang="ko">로컬 체험</span>
+            <span data-lang="ja">ローカル体験</span>
+            <span data-lang="en">Local Experiences</span>
+          </h3>
+          <p>
+            <span data-lang="ko">현지인이 직접 등록한 맛집, 문화, 액티비티, 자연 체험을 지도에서 확인하고 참여하세요.</span>
+            <span data-lang="ja">現地の人が登録したグルメ、文化、アクティビティ、自然体験を地図で確認して参加しましょう。</span>
+            <span data-lang="en">Discover local food, culture, activities, and nature experiences registered by locals on the map.</span>
+          </p>
+          <ul class="feature-list">
+            <li><span data-lang="ko">현지인이 등록한 체험 (맛집, 문화, 액티비티, 자연)</span><span data-lang="ja">現地の人が登録した体験（グルメ、文化、アクティビティ、自然）</span><span data-lang="en">Experiences by locals (food, culture, activities, nature)</span></li>
+            <li><span data-lang="ko">지도로 위치 확인</span><span data-lang="ja">地図で位置確認</span><span data-lang="en">Check locations on map</span></li>
+            <li><span data-lang="ko">체험 신청 및 참여</span><span data-lang="ja">体験の申し込み&参加</span><span data-lang="en">Apply and participate</span></li>
+          </ul>
+        </div>
+
+        <!-- Safety -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e38d72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>
+            <span data-lang="ko">안전한 환경</span>
+            <span data-lang="ja">安全な環境</span>
+            <span data-lang="en">Safe Environment</span>
+          </h3>
+          <p>
+            <span data-lang="ko">휴대폰 인증, 신고/차단 기능, 매너 온도 시스템으로 안전하고 건전한 커뮤니티를 유지합니다.</span>
+            <span data-lang="ja">電話番号認証、通報/ブロック機能、マナー温度システムで安全で健全なコミュニティを維持します。</span>
+            <span data-lang="en">Phone verification, report/block features, and manner temperature system keep the community safe.</span>
+          </p>
+          <ul class="feature-list">
+            <li><span data-lang="ko">휴대폰 인증</span><span data-lang="ja">電話番号認証</span><span data-lang="en">Phone verification</span></li>
+            <li><span data-lang="ko">신고/차단 기능</span><span data-lang="ja">通報/ブロック機能</span><span data-lang="en">Report/Block</span></li>
+            <li><span data-lang="ko">매너 온도 시스템</span><span data-lang="ja">マナー温度システム</span><span data-lang="en">Manner temperature system</span></li>
+          </ul>
+        </div>
+
+        <!-- Social Login -->
+        <div class="feature-card feature-card-wide">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e38d72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          </div>
+          <h3>
+            <span data-lang="ko">간편 소셜 로그인</span>
+            <span data-lang="ja">簡単ソーシャルログイン</span>
+            <span data-lang="en">Easy Social Login</span>
+          </h3>
+          <p>
+            <span data-lang="ko">Google, 카카오, LINE, Apple 계정으로 간편하게 시작하세요. 복잡한 가입 절차 없이 바로 이용할 수 있습니다.</span>
+            <span data-lang="ja">Google、カカオ、LINE、Appleアカウントで簡単にスタート。複雑な登録手続きなしですぐに利用できます。</span>
+            <span data-lang="en">Get started with Google, Kakao, LINE, or Apple. No complicated sign-up process needed.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="screenshots" id="screenshots">
+    <div class="container">
+      <div class="screenshots-header">
+        <span class="section-label">Screenshots</span>
+        <h2 class="section-title">
+          <span data-lang="ko">앱 스크린샷</span>
+          <span data-lang="ja">アプリスクリーンショット</span>
+          <span data-lang="en">App Screenshots</span>
+        </h2>
+      </div>
+      <div class="screenshots-placeholder">
+        <span data-lang="ko">스크린샷은 곧 추가될 예정입니다.</span>
+        <span data-lang="ja">スクリーンショットは近日追加予定です。</span>
+        <span data-lang="en">Screenshots coming soon.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section class="download" id="download">
+    <div class="container">
+      <div class="download-box">
+        <h2>
+          <span data-lang="ko">지금 MONOMONO를 시작하세요</span>
+          <span data-lang="ja">今すぐMONOMONOを始めましょう</span>
+          <span data-lang="en">Get started with MONOMONO</span>
+        </h2>
+        <p>
+          <span data-lang="ko">한국과 일본을 잇는 새로운 여행 경험이 기다립니다.</span>
+          <span data-lang="ja">韓国と日本をつなぐ新しい旅の体験が待っています。</span>
+          <span data-lang="en">A new travel experience connecting Korea and Japan awaits you.</span>
+        </p>
+        <div class="store-badges">
+          <a href="#" class="store-badge store-badge-disabled" aria-label="Google Play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.3 2.3-8.636-8.632z"/></svg>
+            <span>Google Play</span>
+          </a>
+        </div>
+        <p style="margin-top: 16px; font-size: 13px; color: var(--color-text-tertiary);">
+          <span data-lang="ko">* 출시 준비중입니다. 곧 다운로드할 수 있습니다.</span>
+          <span data-lang="ja">* リリース準備中です。もうすぐダウンロードできます。</span>
+          <span data-lang="en">* Coming soon. Download will be available shortly.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-links">
+            <a href="privacy-ko.html" data-lang="ko">개인정보처리방침</a>
+            <a href="privacy-ja.html" data-lang="ja">プライバシーポリシー</a>
+            <a href="privacy-ko.html" data-lang="en">Privacy Policy</a>
+            <a href="terms-ko.html" data-lang="ko">이용약관</a>
+            <a href="terms-ja.html" data-lang="ja">利用規約</a>
+            <a href="terms-ko.html" data-lang="en">Terms of Service</a>
+          </div>
+          <p class="footer-contact">
+            <span data-lang="ko">문의: </span>
+            <span data-lang="ja">お問い合わせ: </span>
+            <span data-lang="en">Contact: </span>
+            <a href="mailto:simsim_dev@simsimlounge.net">simsim_dev@simsimlounge.net</a>
+          </p>
+        </div>
+        <p class="footer-copyright">&copy; 2025 SimSim Lounge Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-switch button').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
+      });
+    }
+  </script>
+
+</body>
+</html>
