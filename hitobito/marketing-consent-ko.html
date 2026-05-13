@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HITOBITO - 마케팅 수신 동의</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            background-color: #f4f3f0;
+            color: #44403c;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: #f4f3f0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 16px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .lang-btn {
+            padding: 6px 16px;
+            border: 1px solid #d6d3d1;
+            border-radius: 20px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            color: #78716c;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #e38d72;
+            color: white;
+            border-color: #e38d72;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        .effective-date {
+            font-size: 14px;
+            color: #78716c;
+            margin-bottom: 24px;
+        }
+
+        .preamble {
+            background: #FCFAF7;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #44403c;
+            line-height: 1.7;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1c1917;
+            margin-bottom: 12px;
+        }
+
+        .section-content {
+            background: #FCFAF7;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .bullet {
+            display: flex;
+            padding-left: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #57534e;
+            line-height: 1.5;
+        }
+
+        .bullet::before {
+            content: "\2022";
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .text-block {
+            font-size: 14px;
+            color: #44403c;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .info-box {
+            background: #f5f5f4;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .info-box-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1c1917;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            color: #a8a29e;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>HITOBITO - 마케팅 수신 동의</h1>
+        <div class="lang-switcher">
+            <span class="lang-btn active">한국어</span>
+            <a href="marketing-consent-ja.html" class="lang-btn">日本語</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="effective-date">시행일: 2026년 4월 28일</div>
+
+        <div class="preamble">
+            주식회사 심심라운지(이하 '회사')가 운영하는 HITOBITO 서비스는 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제50조에 따라, 이용자에게 영리 목적의 광고성 정보를 전송하기 위해 아래와 같이 고지하며 사전 동의를 받고 있습니다.
+        </div>
+
+        <!-- 1. 수신 정보의 유형 -->
+        <div class="section">
+            <div class="section-title">제1조 (수신 정보의 유형)</div>
+            <div class="section-content">
+                <div class="text-block">동의 시 아래와 같은 마케팅 정보를 수신하게 됩니다:</div>
+                <div class="bullet">이벤트 및 프로모션 안내</div>
+                <div class="bullet">신규 기능 및 서비스 업데이트 안내</div>
+                <div class="bullet">여행 관련 정보 및 추천 콘텐츠</div>
+                <div class="bullet">할인 혜택 및 제휴 서비스 안내</div>
+            </div>
+        </div>
+
+        <!-- 2. 전송 채널 -->
+        <div class="section">
+            <div class="section-title">제2조 (전송 채널)</div>
+            <div class="section-content">
+                <div class="text-block">마케팅 정보는 다음 채널을 통해 전송됩니다:</div>
+                <div class="bullet">앱 푸시 알림</div>
+                <div class="bullet">이메일</div>
+            </div>
+        </div>
+
+        <!-- 3. 전송자 정보 -->
+        <div class="section">
+            <div class="section-title">제3조 (전송자 정보)</div>
+            <div class="section-content">
+                <div class="info-box">
+                    <div class="info-box-title">사업자명:</div>
+                    <div>주식회사 심심라운지</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-box-title">서비스명:</div>
+                    <div>HITOBITO</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-box-title">문의:</div>
+                    <div>앱 내 고객센터 또는 이메일 (simsim_dev@simsimlounge.net)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 수신 거부 및 동의 철회 -->
+        <div class="section">
+            <div class="section-title">제4조 (수신 거부 및 동의 철회)</div>
+            <div class="section-content">
+                <div class="text-block">이용자는 언제든지 마케팅 수신 동의를 철회할 수 있습니다:</div>
+                <div class="bullet">앱 내 설정 > 알림 설정 > 마케팅 수신 동의 토글 OFF</div>
+                <div class="bullet">동의 철회 시 즉시 마케팅 정보 전송이 중단됩니다</div>
+                <div class="bullet">동의 및 철회 시점은 법적 증빙을 위해 기록됩니다</div>
+            </div>
+        </div>
+
+        <!-- 5. 동의 거부 시 안내 -->
+        <div class="section">
+            <div class="section-title">제5조 (동의 거부 시 안내)</div>
+            <div class="section-content">
+                <div class="text-block">마케팅 수신 동의는 선택사항이며, 동의하지 않아도 HITOBITO 서비스 이용에 제한이 없습니다. 다만, 동의하지 않을 경우 이벤트, 프로모션, 할인 혜택 등의 정보를 받아보실 수 없습니다.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 HITOBITO. All rights reserved.
+    </div>
+</body>
+</html>
