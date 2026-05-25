@@ -50,7 +50,10 @@
     [data-lang] { display: none !important; }
     [lang="ko"] [data-lang="ko"] { display: inline !important; }
     [lang="ja"] [data-lang="ja"] { display: inline !important; }
-    [lang="en"] [data-lang="en"] { display: inline !important; }
+    /* Block-level lang toggle for download sections */
+    .download-lang { display: none !important; }
+    [lang="ko"] .download-lang[data-lang="ko"] { display: flex !important; }
+    [lang="ja"] .download-lang[data-lang="ja"] { display: flex !important; }
 
     /* Nav */
     .nav {
@@ -207,21 +210,55 @@
     /* Download */
     .download { padding: var(--section-padding); text-align: center; }
     .download-box {
-      max-width: 600px; margin: 0 auto; padding: 64px 40px;
+      max-width: 800px; margin: 0 auto; padding: 64px 48px;
       background: linear-gradient(135deg, var(--color-primary-light), #fff5f2);
       border-radius: var(--radius); border: 1px solid rgba(227,141,114,0.15);
     }
-    .download-box h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
-    .download-box p { font-size: 16px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 32px; }
-    .store-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    .store-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 24px; background: #111; color: #fff; border-radius: 10px;
-      font-size: 14px; font-weight: 600; transition: all var(--transition);
+    .download-box h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+    .download-box > p { font-size: 16px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 40px; }
+    .download-content {
+      display: flex; align-items: center; justify-content: center; gap: 48px;
     }
-    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
-    .store-badge svg { width: 22px; height: 22px; }
-    .store-badge-disabled { opacity: 0.5; pointer-events: none; }
+    .download-qr-group {
+      display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;
+    }
+    .download-qr-item {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .download-qr-box {
+      width: 160px; height: 160px; background: #fff; border-radius: 16px;
+      padding: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      border: 1px solid var(--color-border);
+    }
+    .download-qr-box img { width: 100%; height: 100%; border-radius: 8px; }
+    .download-qr-store {
+      font-size: 13px; font-weight: 700; color: var(--color-text);
+    }
+    .download-qr-label {
+      font-size: 12px; color: var(--color-text-tertiary); margin-top: -4px;
+    }
+    .download-divider {
+      width: 100%; max-width: 320px; height: 1px;
+      background: rgba(227,141,114,0.15); margin: 8px auto;
+    }
+    .store-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 28px; background: #111; color: #fff; border-radius: 12px;
+      font-size: 15px; font-weight: 600; transition: all var(--transition);
+      min-width: 200px; text-decoration: none;
+    }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.25); background: #222; }
+    .store-badge svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .store-badge-info { display: flex; flex-direction: column; align-items: flex-start; }
+    .store-badge-sub { font-size: 11px; font-weight: 400; opacity: 0.7; }
+    .store-badge-name { font-size: 16px; font-weight: 700; line-height: 1.2; }
+    @media (max-width: 480px) {
+      .download-qr-group { gap: 20px; }
+      .download-qr-box { width: 130px; height: 130px; padding: 8px; }
+      .store-badges { flex-direction: column; align-items: center; }
+      .download-box { padding: 48px 24px; }
+    }
 
     /* Footer */
     .footer { padding: 40px 0; border-top: 1px solid var(--color-border); background: var(--color-bg-subtle); }
@@ -231,7 +268,6 @@
     .footer-links a[data-lang] { display: none !important; }
     [lang="ko"] .footer-links a[data-lang="ko"] { display: inline !important; }
     [lang="ja"] .footer-links a[data-lang="ja"] { display: inline !important; }
-    [lang="en"] .footer-links a[data-lang="en"] { display: inline !important; }
     .footer-links a:hover { color: var(--color-primary); }
     .footer-copyright { font-size: 13px; color: var(--color-text-tertiary); }
     .footer-contact { font-size: 13px; color: var(--color-text-secondary); }
@@ -271,6 +307,7 @@
       .hero h1 { font-size: 28px; }
       .download-box { padding: 48px 24px; }
       .download-box h2 { font-size: 22px; }
+      .download-qr-box { width: 140px; height: 140px; padding: 8px; }
     }
   </style>
 </head>
@@ -284,13 +321,12 @@
         <span>HITOBITO</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#features"><span data-lang="ko">주요 기능</span><span data-lang="ja">主な機能</span><span data-lang="en">Features</span></a></li>
-        <li><a href="#download"><span data-lang="ko">다운로드</span><span data-lang="ja">ダウンロード</span><span data-lang="en">Download</span></a></li>
+        <li><a href="#features"><span data-lang="ko">주요 기능</span><span data-lang="ja">主な機能</span></a></li>
+        <li><a href="#download"><span data-lang="ko">다운로드</span><span data-lang="ja">ダウンロード</span></a></li>
         <li>
           <div class="lang-switch">
             <button onclick="setLang('ko')" class="active">KO</button>
             <button onclick="setLang('ja')">JA</button>
-            <button onclick="setLang('en')">EN</button>
           </div>
         </li>
       </ul>
@@ -307,24 +343,20 @@
       <h1>
         <span data-lang="ko">한국과 일본을 잇는<br>여행 매칭 앱, <span class="highlight">HITOBITO</span></span>
         <span data-lang="ja">韓国と日本をつなぐ<br>旅マッチングアプリ、<span class="highlight">HITOBITO</span></span>
-        <span data-lang="en">Travel matching app<br>connecting Korea & Japan, <span class="highlight">HITOBITO</span></span>
       </h1>
       <p class="hero-desc">
         <span data-lang="ko">여행 일정을 등록하고, 같은 도시의 여행자와 매칭되어<br>언어 장벽 없이 함께 여행하세요.</span>
         <span data-lang="ja">旅行日程を登録して、同じ都市の旅行者とマッチング。<br>言語の壁なく一緒に旅しましょう。</span>
-        <span data-lang="en">Register your travel plans, match with travelers in the same city,<br>and explore together without language barriers.</span>
       </p>
       <div class="hero-buttons">
         <a href="#download" class="btn btn-primary">
           <span data-lang="ko">앱 다운로드</span>
           <span data-lang="ja">アプリをダウンロード</span>
-          <span data-lang="en">Download App</span>
-        </a>
+                  </a>
         <a href="#features" class="btn btn-secondary">
           <span data-lang="ko">기능 살펴보기</span>
           <span data-lang="ja">機能を見る</span>
-          <span data-lang="en">Explore Features</span>
-        </a>
+                  </a>
       </div>
     </div>
   </section>
@@ -337,13 +369,11 @@
         <h2 class="section-title">
           <span data-lang="ko">HITOBITO의 주요 기능</span>
           <span data-lang="ja">HITOBITOの主な機能</span>
-          <span data-lang="en">Key Features of HITOBITO</span>
-        </h2>
+                  </h2>
         <p class="section-desc">
           <span data-lang="ko">여행 매칭부터 실시간 번역 채팅, 로컬 체험까지. 새로운 여행 경험을 제공합니다.</span>
           <span data-lang="ja">旅マッチングからリアルタイム翻訳チャット、ローカル体験まで。新しい旅の体験を提供します。</span>
-          <span data-lang="en">From travel matching to real-time translated chat and local experiences. A new way to travel.</span>
-        </p>
+                  </p>
       </div>
 
       <div class="features-grid">
@@ -355,17 +385,15 @@
           <h3>
             <span data-lang="ko">여행 매칭</span>
             <span data-lang="ja">旅マッチング</span>
-            <span data-lang="en">Travel Matching</span>
-          </h3>
+                      </h3>
           <p>
             <span data-lang="ko">여행 일정을 등록하면 같은 도시, 같은 시기의 사용자를 추천합니다. 스와이프로 간편하게 매칭하세요.</span>
             <span data-lang="ja">旅行日程を登録すると、同じ都市・同じ時期のユーザーをおすすめ。スワイプで簡単にマッチング。</span>
-            <span data-lang="en">Register your travel dates and get matched with users in the same city at the same time. Swipe to match easily.</span>
-          </p>
+                      </p>
           <ul class="feature-list">
-            <li><span data-lang="ko">같은 도시 & 같은 시기 추천</span><span data-lang="ja">同じ都市&同じ時期のおすすめ</span><span data-lang="en">Same city & same period recommendations</span></li>
-            <li><span data-lang="ko">스와이프로 좋아요/스킵</span><span data-lang="ja">スワイプでいいね/スキップ</span><span data-lang="en">Swipe to like/skip</span></li>
-            <li><span data-lang="ko">서로 좋아요 시 매칭 성사</span><span data-lang="ja">お互いいいねでマッチング成立</span><span data-lang="en">Mutual likes create a match</span></li>
+            <li><span data-lang="ko">같은 도시 & 같은 시기 추천</span><span data-lang="ja">同じ都市&同じ時期のおすすめ</span></li>
+            <li><span data-lang="ko">스와이프로 좋아요/스킵</span><span data-lang="ja">スワイプでいいね/スキップ</span></li>
+            <li><span data-lang="ko">서로 좋아요 시 매칭 성사</span><span data-lang="ja">お互いいいねでマッチング成立</span></li>
           </ul>
         </div>
 
@@ -377,17 +405,15 @@
           <h3>
             <span data-lang="ko">실시간 채팅 & 자동 번역</span>
             <span data-lang="ja">リアルタイムチャット & 自動翻訳</span>
-            <span data-lang="en">Real-time Chat & Auto Translation</span>
-          </h3>
+                      </h3>
           <p>
             <span data-lang="ko">매칭된 상대와 실시간으로 채팅하세요. 한국어와 일본어가 자동 번역되어 언어 장벽 없이 소통할 수 있습니다.</span>
             <span data-lang="ja">マッチした相手とリアルタイムでチャット。韓国語と日本語が自動翻訳され、言語の壁なくコミュニケーションできます。</span>
-            <span data-lang="en">Chat in real-time with your match. Korean and Japanese are auto-translated so you can communicate without language barriers.</span>
-          </p>
+                      </p>
           <ul class="feature-list">
-            <li><span data-lang="ko">매칭된 상대와 실시간 채팅</span><span data-lang="ja">マッチした相手とリアルタイムチャット</span><span data-lang="en">Real-time chat with matches</span></li>
-            <li><span data-lang="ko">한국어 - 일본어 자동 번역</span><span data-lang="ja">韓国語 - 日本語 自動翻訳</span><span data-lang="en">Korean - Japanese auto translation</span></li>
-            <li><span data-lang="ko">언어 장벽 없는 소통</span><span data-lang="ja">言語の壁のないコミュニケーション</span><span data-lang="en">Communication without language barriers</span></li>
+            <li><span data-lang="ko">매칭된 상대와 실시간 채팅</span><span data-lang="ja">マッチした相手とリアルタイムチャット</span></li>
+            <li><span data-lang="ko">한국어 - 일본어 자동 번역</span><span data-lang="ja">韓国語 - 日本語 自動翻訳</span></li>
+            <li><span data-lang="ko">언어 장벽 없는 소통</span><span data-lang="ja">言語の壁のないコミュニケーション</span></li>
           </ul>
         </div>
 
@@ -399,19 +425,16 @@
           <h3 style="color: #b5b3af;">
             <span data-lang="ko">로컬 체험</span>
             <span data-lang="ja">ローカル体験</span>
-            <span data-lang="en">Local Experiences</span>
-          </h3>
+                      </h3>
           <p style="color: #ccc9c4; filter: blur(4px); user-select: none;">
             <span data-lang="ko">현지인이 직접 등록한 맛집, 문화, 액티비티, 자연 체험을 지도에서 확인하고 참여하세요.</span>
             <span data-lang="ja">現地の人が登録したグルメ、文化、アクティビティ、自然体験を地図で確認して参加しましょう。</span>
-            <span data-lang="en">Discover local food, culture, activities, and nature experiences registered by locals on the map.</span>
-          </p>
+                      </p>
           <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
             <span style="display: inline-block; padding: 8px 20px; background: var(--color-primary); color: #fff; border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.02em;">
               <span data-lang="ko">추후 공개</span>
               <span data-lang="ja">近日公開</span>
-              <span data-lang="en">Coming Soon</span>
-            </span>
+                          </span>
           </div>
         </div>
 
@@ -423,17 +446,15 @@
           <h3>
             <span data-lang="ko">안전한 환경</span>
             <span data-lang="ja">安全な環境</span>
-            <span data-lang="en">Safe Environment</span>
-          </h3>
+                      </h3>
           <p>
             <span data-lang="ko">휴대폰 인증, 신고/차단 기능, 매너 온도 시스템으로 안전하고 건전한 커뮤니티를 유지합니다.</span>
             <span data-lang="ja">電話番号認証、通報/ブロック機能、マナー温度システムで安全で健全なコミュニティを維持します。</span>
-            <span data-lang="en">Phone verification, report/block features, and manner temperature system keep the community safe.</span>
-          </p>
+                      </p>
           <ul class="feature-list">
-            <li><span data-lang="ko">휴대폰 인증</span><span data-lang="ja">電話番号認証</span><span data-lang="en">Phone verification</span></li>
-            <li><span data-lang="ko">신고/차단 기능</span><span data-lang="ja">通報/ブロック機能</span><span data-lang="en">Report/Block</span></li>
-            <li><span data-lang="ko">매너 온도 시스템</span><span data-lang="ja">マナー温度システム</span><span data-lang="en">Manner temperature system</span></li>
+            <li><span data-lang="ko">휴대폰 인증</span><span data-lang="ja">電話番号認証</span></li>
+            <li><span data-lang="ko">신고/차단 기능</span><span data-lang="ja">通報/ブロック機能</span></li>
+            <li><span data-lang="ko">매너 온도 시스템</span><span data-lang="ja">マナー温度システム</span></li>
           </ul>
         </div>
 
@@ -445,13 +466,11 @@
           <h3>
             <span data-lang="ko">간편 소셜 로그인</span>
             <span data-lang="ja">簡単ソーシャルログイン</span>
-            <span data-lang="en">Easy Social Login</span>
-          </h3>
+                      </h3>
           <p>
             <span data-lang="ko">Google, LINE, Apple 계정으로 간편하게 시작하세요. 복잡한 가입 절차 없이 바로 이용할 수 있습니다.</span>
             <span data-lang="ja">Google、LINE、Appleアカウントで簡単にスタート。複雑な登録手続きなしですぐに利用できます。</span>
-            <span data-lang="en">Get started with Google, LINE, or Apple. No complicated sign-up process needed.</span>
-          </p>
+                      </p>
         </div>
       </div>
     </div>
@@ -465,8 +484,7 @@
         <h2 class="section-title">
           <span data-lang="ko">앱 스크린샷</span>
           <span data-lang="ja">アプリスクリーンショット</span>
-          <span data-lang="en">App Screenshots</span>
-        </h2>
+                  </h2>
       </div>
       <!-- Platform Tabs -->
       <div class="platform-tabs">
@@ -522,26 +540,6 @@
           <img src="../assets/images/hitobito/appstore_5_travel_ja.jpg" alt="旅行" loading="lazy">
           <div class="screenshot-label">旅行</div>
         </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/appstore_1_login_ko.jpg" alt="Login" loading="lazy">
-          <div class="screenshot-label">Login</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/appstore_2_main_ko.jpg" alt="Main" loading="lazy">
-          <div class="screenshot-label">Main</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/appstore_3_matching_ko.jpg" alt="Matching" loading="lazy">
-          <div class="screenshot-label">Matching</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/appstore_4_chat_ko.jpg" alt="Chat" loading="lazy">
-          <div class="screenshot-label">Chat</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/appstore_5_travel_ko.jpg" alt="Travel" loading="lazy">
-          <div class="screenshot-label">Travel</div>
-        </div>
       </div>
 
       <!-- Google Play Screenshots -->
@@ -586,26 +584,6 @@
           <img src="../assets/images/hitobito/googleplay_5_travel_ja.jpg" alt="旅行" loading="lazy">
           <div class="screenshot-label">旅行</div>
         </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/googleplay_1_login_ko.jpg" alt="Login" loading="lazy">
-          <div class="screenshot-label">Login</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/googleplay_2_main_ko.jpg" alt="Main" loading="lazy">
-          <div class="screenshot-label">Main</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/googleplay_3_matching_ko.jpg" alt="Matching" loading="lazy">
-          <div class="screenshot-label">Matching</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/googleplay_4_chat_ko.jpg" alt="Chat" loading="lazy">
-          <div class="screenshot-label">Chat</div>
-        </div>
-        <div class="screenshot-item" data-lang="en">
-          <img src="../assets/images/hitobito/googleplay_5_travel_ko.jpg" alt="Travel" loading="lazy">
-          <div class="screenshot-label">Travel</div>
-        </div>
       </div>
     </div>
   </section>
@@ -617,24 +595,82 @@
         <h2>
           <span data-lang="ko">지금 HITOBITO를 시작하세요</span>
           <span data-lang="ja">今すぐHITOBITOを始めましょう</span>
-          <span data-lang="en">Get started with HITOBITO</span>
-        </h2>
+                  </h2>
         <p>
-          <span data-lang="ko">한국과 일본을 잇는 새로운 여행 경험이 기다립니다.</span>
-          <span data-lang="ja">韓国と日本をつなぐ新しい旅の体験が待っています。</span>
-          <span data-lang="en">A new travel experience connecting Korea and Japan awaits you.</span>
+          <span data-lang="ko">한국과 일본을 잇는 새로운 여행 경험이 기다립니다.<br>QR 코드를 스캔하거나 스토어 버튼을 눌러 다운로드하세요.</span>
+          <span data-lang="ja">韓国と日本をつなぐ新しい旅の体験が待っています。<br>QRコードをスキャンするか、ストアボタンからダウンロードしてください。</span>
         </p>
-        <div class="store-badges">
-          <a href="#" class="store-badge store-badge-disabled" aria-label="Google Play">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.3 2.3-8.636-8.632z"/></svg>
-            <span>Google Play</span>
-          </a>
+        <!-- KO: 한국 스토어 -->
+        <div class="download-content download-lang" data-lang="ko" style="flex-direction: column; gap: 28px;">
+          <div class="download-qr-group">
+            <div class="download-qr-item">
+              <div class="download-qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&format=svg&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.simsimdev.mobile%26hl%3Dko%26gl%3DKR" alt="QR Code - Google Play 한국">
+              </div>
+              <span class="download-qr-store">Google Play</span>
+            </div>
+            <div class="download-qr-item">
+              <div class="download-qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&format=svg&data=https%3A%2F%2Fapps.apple.com%2Fkr%2Fapp%2Fid6768179325" alt="QR Code - App Store 한국">
+              </div>
+              <span class="download-qr-store">App Store</span>
+            </div>
+          </div>
+          <span class="download-qr-label">카메라로 QR 코드를 스캔하세요</span>
+          <div class="download-divider"></div>
+          <div class="store-badges">
+            <a href="https://play.google.com/store/apps/details?id=com.simsimdev.mobile&hl=ko&gl=KR" target="_blank" rel="noopener" class="store-badge" aria-label="Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.3 2.3-8.636-8.632z"/></svg>
+              <div class="store-badge-info">
+                <span class="store-badge-sub">GET IT ON</span>
+                <span class="store-badge-name">Google Play</span>
+              </div>
+            </a>
+            <a href="https://apps.apple.com/kr/app/id6768179325" target="_blank" rel="noopener" class="store-badge" aria-label="App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div class="store-badge-info">
+                <span class="store-badge-sub">Download on the</span>
+                <span class="store-badge-name">App Store</span>
+              </div>
+            </a>
+          </div>
         </div>
-        <p style="margin-top: 16px; font-size: 13px; color: var(--color-text-tertiary);">
-          <span data-lang="ko">* 출시 준비중입니다. 곧 다운로드할 수 있습니다.</span>
-          <span data-lang="ja">* リリース準備中です。もうすぐダウンロードできます。</span>
-          <span data-lang="en">* Coming soon. Download will be available shortly.</span>
-        </p>
+
+        <!-- JA: 일본 스토어 -->
+        <div class="download-content download-lang" data-lang="ja" style="flex-direction: column; gap: 28px;">
+          <div class="download-qr-group">
+            <div class="download-qr-item">
+              <div class="download-qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&format=svg&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.simsimdev.mobile%26hl%3Dja%26gl%3DJP" alt="QR Code - Google Play 日本">
+              </div>
+              <span class="download-qr-store">Google Play</span>
+            </div>
+            <div class="download-qr-item">
+              <div class="download-qr-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&format=svg&data=https%3A%2F%2Fapps.apple.com%2Fjp%2Fapp%2Fid6768179325" alt="QR Code - App Store 日本">
+              </div>
+              <span class="download-qr-store">App Store</span>
+            </div>
+          </div>
+          <span class="download-qr-label">カメラでQRコードをスキャン</span>
+          <div class="download-divider"></div>
+          <div class="store-badges">
+            <a href="https://play.google.com/store/apps/details?id=com.simsimdev.mobile&hl=ja&gl=JP" target="_blank" rel="noopener" class="store-badge" aria-label="Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.3 2.3-8.636-8.632z"/></svg>
+              <div class="store-badge-info">
+                <span class="store-badge-sub">GET IT ON</span>
+                <span class="store-badge-name">Google Play</span>
+              </div>
+            </a>
+            <a href="https://apps.apple.com/jp/app/id6768179325" target="_blank" rel="noopener" class="store-badge" aria-label="App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div class="store-badge-info">
+                <span class="store-badge-sub">Download on the</span>
+                <span class="store-badge-name">App Store</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -647,22 +683,17 @@
           <div class="footer-links">
             <a href="privacy-ko.html" data-lang="ko">개인정보처리방침</a>
             <a href="privacy-ja.html" data-lang="ja">プライバシーポリシー</a>
-            <a href="privacy-ko.html" data-lang="en">Privacy Policy</a>
             <a href="terms-ko.html" data-lang="ko">이용약관</a>
             <a href="terms-ja.html" data-lang="ja">利用規約</a>
-            <a href="terms-ko.html" data-lang="en">Terms of Service</a>
             <a href="csae-policy-ko.html" data-lang="ko">아동 안전 표준 정책</a>
             <a href="csae-policy-ja.html" data-lang="ja">児童安全基準ポリシー</a>
-            <a href="csae-policy-ko.html" data-lang="en">Child Safety Policy</a>
             <a href="marketing-consent-ko.html" data-lang="ko">마케팅 수신 동의</a>
             <a href="marketing-consent-ja.html" data-lang="ja">マーケティング受信同意</a>
-            <a href="marketing-consent-ko.html" data-lang="en">Marketing Consent</a>
           </div>
           <p class="footer-contact">
             <span data-lang="ko">문의: </span>
             <span data-lang="ja">お問い合わせ: </span>
-            <span data-lang="en">Contact: </span>
-            <a href="mailto:simsim_dev@simsimlounge.net">simsim_dev@simsimlounge.net</a>
+                        <a href="mailto:simsim_dev@simsimlounge.net">simsim_dev@simsimlounge.net</a>
           </p>
         </div>
         <p class="footer-copyright">&copy; 2025 SimSim Lounge Inc. All rights reserved.</p>
